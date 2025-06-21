@@ -1,5 +1,5 @@
 import cors from 'cors';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import pathNotFoundErrorHandler from './errors/pathNotFoundErrorHandler';
 import errorHandler from './middlewares/error.middleware';
 import { bookRoutes } from './modules/book/book.routes';
@@ -10,6 +10,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.get("/", (req: Request, res: Response) => {
+    res.send("Library Management Server is running!");
+  });
 
 app.use('/api/books', bookRoutes);
 app.use('/api/borrow', borrowRoutes);
