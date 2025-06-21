@@ -1,3 +1,14 @@
+You're absolutely right! The Markdown has some formatting issues — particularly with:
+
+* Unclosed or misplaced triple backticks (\`\`\`)
+* Escaped characters (`\&`, `\.`) that shouldn't be escaped
+* Extra or misplaced horizontal rules (`---`)
+* Nested code blocks inside list items that aren't indented properly
+
+---
+
+## ✅ Here is the fully corrected and perfectly structured `README.md`
+
 ```markdown
 # 📚 Library Management API (Assignment 3)
 
@@ -27,42 +38,42 @@ A Library Management System built using **Express**, **TypeScript**, and **Mongo
 ---
 
 ## 📂 Project Structure
+
 ```
 
 src/
 ├── app.ts
 ├── server.ts
 ├── config/
-│ └── db.ts
+│   └── db.ts
 ├── controllers/
-│ ├── book.controller.ts
-│ └── borrow\.controller.ts
+│   ├── book.controller.ts
+│   └── borrow\.controller.ts
 ├── models/
-│ ├── book.model.ts
-│ └── borrow\.model.ts
+│   ├── book.model.ts
+│   └── borrow\.model.ts
 ├── routes/
-│ ├── book.routes.ts
-│ └── borrow\.routes.ts
+│   ├── book.routes.ts
+│   └── borrow\.routes.ts
 ├── services/
-│ ├── book.service.ts
-│ └── borrow\.service.ts
+│   ├── book.service.ts
+│   └── borrow\.service.ts
 ├── middlewares/
-│ └── error.middleware.ts
+│   └── error.middleware.ts
 ├── utils/
-│ └── apiResponse.ts
+│   └── apiResponse.ts
 .env
 
 ```
 
 ---
-```
 
 ## 📦 API Endpoints
 
 ### 📘 Books
 
 | Method | Endpoint         | Description                  |
-| ------ | ---------------- | ---------------------------- |
+|--------|------------------|------------------------------|
 | POST   | `/api/books`     | Create a new book            |
 | GET    | `/api/books`     | Get all books (filter, sort) |
 | GET    | `/api/books/:id` | Get book by ID               |
@@ -80,7 +91,7 @@ GET /api/books?filter=FANTASY\&sortBy=createdAt\&sort=desc\&limit=5
 ### 📕 Borrow
 
 | Method | Endpoint      | Description                        |
-| ------ | ------------- | ---------------------------------- |
+|--------|---------------|------------------------------------|
 | POST   | `/api/borrow` | Borrow a book (enforces logic)     |
 | GET    | `/api/borrow` | Borrowed summary using aggregation |
 
@@ -118,11 +129,12 @@ POST /api/borrow
 
 GET /api/borrow
 
-```
-
 ````
+
 5. **Validation Error Example**
+
 Send a negative number for `copies`:
+
 ```json
 {
   "copies": -5
@@ -189,10 +201,9 @@ npm run dev
 
 ## 👩‍💻 Author
 
-- Name: Nowrin Islam Mim
-- Submission Date: Jun 21, 2025
+* Name: Nowrin Islam Mim
+* Submission Date: Jun 21, 2025
 
 ```
 
----
 ```
