@@ -1,50 +1,33 @@
-import { ErrorRequestHandler } from 'express';
-import mongoose from 'mongoose';
+/* eslint-disable no-unused-vars */
+import { ErrorRequestHandler } from "express";
+import ApiError from "../errors/ApiError";
 
-export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+const errorHandler: ErrorRequestHandler = (error, req, res, next) => {
   let statusCode = 500;
-  let message = err.message || 'Something went wrong';
-  let errorResponse = err;
+  let message = "Something went wrong!";
+  let errorData: any = error;
 
-  if (err instanceof mongoose.Error.ValidationError) {
+  if (error?.name === "ValidationError") {
     statusCode = 400;
-    message = 'Validation failed';
-
-    const formattedErrors: Record<string, any> = {};
-
-    for (const key in err.errors) {
-      const e = err.errors[key];
-
-      // Customize the message
-      let customMessage = e.message;
-      if (e.path === 'copies' && e.kind === 'min') {
-        customMessage = 'Copies must be a positive number';
-      }
-
-      // Format exactly as required
-      formattedErrors[key] = {
-        message: customMessage,
-        name: e.name,
-        properties: {
-          message: customMessage,
-          type: e.properties?.type,
-          min: e.properties?.min
-        },
-        kind: e.kind,
-        path: e.path,
-        value: e.value
-      };
-    }
-
-    errorResponse = {
-      name: err.name,
-      errors: formattedErrors
+    message = "Validation failed";
+    errorData = {
+      name: "ValidationError",
+      errors: error.errors,
     };
+  } else if (error instanceof ApiError) {
+    statusCode = error?.statusCode;
+    message = error.message;
+    errorData = error;
+  } else if (error instanceof Error) {
+    message = error?.message;
+    errorData = error;
   }
 
   res.status(statusCode).json({
     message,
     success: false,
-    error: errorResponse
+    error: errorData,
   });
 };
+
+export default errorHandler;

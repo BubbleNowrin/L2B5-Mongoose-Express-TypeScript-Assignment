@@ -1,12 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
+import { sendResponse } from '../../utils/apiResponse';
 import {
-    createBookService,
-    deleteBookService,
-    getBookByIdService,
-    getBooksService,
-    updateBookService
-} from '../services/book.service';
-import { sendResponse } from '../utils/apiResponse';
+  createBookService,
+  deleteBookService,
+  getBookByIdService,
+  getBooksService,
+  updateBookService
+} from './book.service';
+
 
 // POST /api/books
 export const createBook = async (req: Request, res: Response, next: NextFunction) => {

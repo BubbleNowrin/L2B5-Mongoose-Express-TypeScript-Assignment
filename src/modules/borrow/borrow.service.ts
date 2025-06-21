@@ -1,5 +1,5 @@
-import { Book } from '../models/book.model';
-import { Borrow } from '../models/borrow.model';
+import { Book } from '../book/book.model';
+import { Borrow } from './borrow.model';
 
 export const borrowBookService = async (bookId: string, quantity: number, dueDate: Date) => {
   const book = await Book.findById(bookId);

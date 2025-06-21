@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
+import { sendResponse } from '../../utils/apiResponse';
 import {
     borrowBookService,
     getBorrowSummaryService
-} from '../services/borrow.service';
-import { sendResponse } from '../utils/apiResponse';
+} from './borrow.service';
 
 // POST /api/borrow
 export const borrowBook = async (req: Request, res: Response, next: NextFunction) => {

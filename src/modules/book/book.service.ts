@@ -1,4 +1,5 @@
-import { Book } from '../models/book.model';
+import { Book } from "./book.model";
+
 
 export const createBookService = async (data: any) => {
   return await Book.create(data);

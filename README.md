@@ -1,18 +1,20 @@
 ```markdown
-# 📚 Library Management API (Assignment 3)
+# 📚 Library Management API
 
-A Library Management System built using **Express**, **TypeScript**, and **MongoDB (Mongoose)**.
+A robust Library Management System built with **Express**, **TypeScript**, and **MongoDB (Mongoose)**. This API allows you to manage books and borrowing operations efficiently, with advanced features like inventory control, aggregation summaries, and comprehensive error handling.
+
+---
 
 ## ✅ Features
 
-- 📖 Create, Read, Update, Delete (CRUD) books
-- 📦 Borrow books with business logic (inventory control)
-- 📊 Borrowed summary using MongoDB Aggregation Pipeline
-- ✅ Schema validation
-- 🔁 Mongoose middleware
-- ⚙️ Static & instance methods
-- 🔎 Filtering, sorting, limiting
-- ⚠️ Custom validation error responses (assignment format)
+- **Book Management:** Create, read, update, and delete books.
+- **Borrowing System:** Borrow books with inventory checks and due dates.
+- **Borrowed Summary:** Aggregated summary of borrowed books using MongoDB aggregation pipeline.
+- **Filtering, Sorting, Limiting:** Retrieve books with flexible query options.
+- **Schema Validation:** Enforced via Mongoose with clear error responses.
+- **Mongoose Middleware:** Automatic availability updates and validation.
+- **Custom Error Handling:** Consistent error responses for validation and API errors.
+- **RESTful API Design:** Clean and predictable endpoints.
 
 ---
 
@@ -21,41 +23,47 @@ A Library Management System built using **Express**, **TypeScript**, and **Mongo
 - Node.js
 - Express 5
 - TypeScript
-- MongoDB + Mongoose
-- Postman (for testing)
+- MongoDB & Mongoose
+- Postman (for API testing)
 
 ---
 
 ## 📂 Project Structure
 ```
 
-src/
+.
+├── .env
+├── .gitignore
+├── package.json
+├── README.md
+├── tsconfig.json
+└── src
 ├── app.ts
 ├── server.ts
-├── config/
+├── config
 │ └── db.ts
-├── controllers/
-│ ├── book.controller.ts
-│ └── borrow\.controller.ts
-├── models/
-│ ├── book.model.ts
-│ └── borrow\.model.ts
-├── routes/
-│ ├── book.routes.ts
-│ └── borrow\.routes.ts
-├── services/
-│ ├── book.service.ts
-│ └── borrow\.service.ts
-├── middlewares/
+├── errors
+│ ├── ApiError.ts
+│ └── pathNotFoundErrorHandler.ts
+├── middlewares
 │ └── error.middleware.ts
-├── utils/
-│ └── apiResponse.ts
-.env
+├── modules
+│ ├── book
+│ │ ├── book.controller.ts
+│ │ ├── book.model.ts
+│ │ ├── book.routes.ts
+│ │ └── book.service.ts
+│ └── borrow
+│ ├── borrow.controller.ts
+│ ├── borrow.model.ts
+│ ├── borrow.routes.ts
+│ └── borrow.service.ts
+└── utils
+└── apiResponse.ts
 
 ```
 
 ---
-```
 
 ## 📦 API Endpoints
 
@@ -117,8 +125,6 @@ POST /api/borrow
 ```
 
 GET /api/borrow
-
-```
 
 ````
 5. **Validation Error Example**
