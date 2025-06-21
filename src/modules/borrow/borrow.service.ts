@@ -18,30 +18,34 @@ export const borrowBookService = async (bookId: string, quantity: number, dueDat
 };
 
 export const getBorrowSummaryService = async () => {
-  return await Borrow.aggregate([
+  const summary = await Borrow.aggregate([
     {
       $group: {
-        _id: '$book',
-        totalQuantity: { $sum: '$quantity' },
+        _id: "$book",
+        totalQuantity: { $sum: "$quantity" },
       },
     },
     {
       $lookup: {
-        from: 'books',
-        localField: '_id',
-        foreignField: '_id',
-        as: 'bookDetails',
+        from: "books",
+        localField: "_id",
+        foreignField: "_id",
+        as: "bookInfo",
       },
     },
-    { $unwind: '$bookDetails' },
+    {
+      $unwind: "$bookInfo",
+    },
     {
       $project: {
+        _id: 0,
         book: {
-          title: '$bookDetails.title',
-          isbn: '$bookDetails.isbn',
+          title: "$bookInfo.title",
+          isbn: "$bookInfo.isbn",
         },
         totalQuantity: 1,
       },
     },
   ]);
+  return summary;
 };
