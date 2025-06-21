@@ -1,9 +1,6 @@
-```markdown
 # 📚 Library Management API
 
 A robust Library Management System built with **Express**, **TypeScript**, and **MongoDB (Mongoose)**. This API allows you to manage books and borrowing operations efficiently, with advanced features like inventory control, aggregation summaries, and comprehensive error handling.
-
----
 
 ## ✅ Features
 
@@ -16,8 +13,6 @@ A robust Library Management System built with **Express**, **TypeScript**, and *
 - **Custom Error Handling:** Consistent error responses for validation and API errors.
 - **RESTful API Design:** Clean and predictable endpoints.
 
----
-
 ## 🚀 Tech Stack
 
 - Node.js
@@ -26,9 +21,8 @@ A robust Library Management System built with **Express**, **TypeScript**, and *
 - MongoDB & Mongoose
 - Postman (for API testing)
 
----
-
 ## 📂 Project Structure
+
 ```
 
 .
@@ -126,14 +120,16 @@ POST /api/borrow
 
 GET /api/borrow
 
-````
+```
+
 5. **Validation Error Example**
-Send a negative number for `copies`:
+   Send a negative number for `copies`:
+
 ```json
 {
   "copies": -5
 }
-````
+```
 
 You’ll get the exact structure:
 
@@ -197,8 +193,3 @@ npm run dev
 
 - Name: Nowrin Islam Mim
 - Submission Date: Jun 21, 2025
-
-```
-
----
-```
